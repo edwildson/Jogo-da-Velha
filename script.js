@@ -2,6 +2,7 @@
 const jogo = [];
 var i = 1;
 const win = (winner) => {
+    $("#msg").removeClass("alert alert-warning").addClass("alert alert-success");
     $("#msg").text(`O jogador ${winner} ganhou!!!`);
     $(".bloco").unbind();
     var r= $('<input type="button" id="btn-restart" value="Jogar novamente"/>');
@@ -13,9 +14,8 @@ const win = (winner) => {
 
 
 const check = () => {
-    //console.log(index);
-   
     i = (i == 1? 2:1); 
+    $("#msg").text(`Vez do jogador ${i}`);
     if(jogo[0]==jogo[1]&&jogo[1]==jogo[2]&&jogo[0]!=undefined){
        return win(jogo[0]);
     };  
@@ -41,8 +41,6 @@ const check = () => {
         return win(jogo[1]);
     };
 };
-
-
 
 $(function(){
     $(".bloco").click(function(){
